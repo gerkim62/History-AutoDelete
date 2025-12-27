@@ -15,9 +15,9 @@ import initialState from "./initialState.json";
 // *     returns 2: '\*RRRING\* Hello\?'
 // *     example 3: preg_quote("\\.+*?[^]$(){}=!<>|:");
 // *     returns 3: '\\\.\+\*\?\[\^\]\$\(\)\{\}\=\!\<\>\|\:'
-const preg_quote = (str, delimiter) => (`${str}`).replace(new RegExp(`[.\\\\+*?\\[\\^\\]$(){}=!<>|:\\${delimiter || ""}-]`, "g"), "\\$&");
+const preg_quote = (str, delimiter) => (`${str}`).replace(new RegExp(`[.\\\\+*?\\[\\^\\]$(){}!<>|:\\${delimiter || ""}-]`, "g"), "\\$&");
 
-const globStringToRegex = (str) => `^${preg_quote(str).replace(/\\\*/g, ".*").replace(/\\\?/g, ".")}$`;
+const globStringToRegex = (str) => `^${preg_quote(str).replace(/\\\*/g, ".*")}$`;
 
 const hasExpression = (state, action) => state.some((expression) => expression.expression === action.payload.expression);
 export const expression = (state = {}, action) => {

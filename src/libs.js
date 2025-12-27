@@ -23,7 +23,7 @@ export const spliceWWW = (url) => {
 	let newURL;
 	try {
 		let urlObject = new URL(url);
-		newURL = `${urlObject.hostname}${urlObject.pathname}`;
+		newURL = `${urlObject.hostname}${urlObject.pathname}${urlObject.search}`;
 		// Strip "www." if the URL starts with it.
 		newURL = newURL.replace(/^www[a-z0-9]?\./, "");
 	} catch (error) {
